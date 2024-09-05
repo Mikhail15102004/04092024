@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1:Анимация</title>
+<style>
+    #animated {
+        width: 100px;
+        height: 100px;
+        background-color: lightblue;
+        border: 2px solid darkblue; 
+        margin: 20px;
+    }
+</style>
+</head>
+<body>
+
+<button id="startAnimation">Квадрат</button>
+<div id="animated"></div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> 
+<script>
+    $(document).ready(function() {
+        // Когда кнопка "Начать анимацию" нажата
+        $("#startAnimation").click(function() {
+            //  изменения размера квадрата
+            $("#animated").animate({
+                width: "200px",
+                height: "200px"
+            }, {
+                duration: 1500, // Продолжительность 1.5 секунды
+                complete: function() {
+                    // По завершении первой анимации, начать вторую анимацию изменения толщины рамки
+                    $(this).animate({ borderWidth: "10px" }, { duration: 3000, queue: false });
+                }
+            });
+        });
+    });
+</script>
+
+</body>
+</html>
